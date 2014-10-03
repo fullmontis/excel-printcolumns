@@ -65,8 +65,10 @@ Sub PrintColumns()
         r2x = r1x + remaining - 1
         r2y = r1y + coln - 1
        
-        wsold.Range(wsold.Cells(p1x, p1y), wsold.Cells(p2x, p2y)).Copy Destination:=ws.Range(ws.Cells(r1x, r1y), ws.Cells(r2x, r2y))
-       
+        wsold.Range(wsold.Cells(p1x, p1y), wsold.Cells(p2x, p2y)).Copy
+        ws.Range(ws.Cells(r1x, r1y), ws.Cells(r2x, r2y)).PasteSpecial xlPasteValues
+        ws.Range(ws.Cells(r1x, r1y), ws.Cells(r2x, r2y)).PasteSpecial xlPasteFormats
+        
         If pagenum = 1 Then
             For j = 1 To coln
                 ws.Cells(1, r1y + j - 1).ColumnWidth = wsold.Cells(rowstart, colstart + j - 1).ColumnWidth
